@@ -61,3 +61,15 @@ ggplot(commute2018) +
 
 ggplot2::ggsave("output.jpg", height = 8, width = 8, units = "in")
 
+
+range <- commute2018 %>% 
+  group_by(NAME) %>% 
+  summarise(max = max(value),
+            min = min(value),
+            diff = max - min)
+
+carpool_transit <- commute2018 %>% 
+  spread(key = key, value = value) %>% 
+  mutate(bigger = carpool > publictransit)
+
+sum(carpool_transit$bigger)  
