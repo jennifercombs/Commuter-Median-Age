@@ -1,6 +1,6 @@
 library(tidyverse)
 library(tidycensus)
-
+ 
 variables <- load_variables(dataset = "acs5", year = 2018)
 
 commute2018 <- get_acs(
